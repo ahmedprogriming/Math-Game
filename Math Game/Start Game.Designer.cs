@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start_Game));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,6 +48,8 @@
             this.tXBAnswer = new System.Windows.Forms.TextBox();
             this.btnChek = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.labtme = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -243,12 +246,29 @@
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // labtme
+            // 
+            this.labtme.AutoSize = true;
+            this.labtme.Font = new System.Drawing.Font("Verdana", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labtme.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labtme.Location = new System.Drawing.Point(463, 557);
+            this.labtme.Name = "labtme";
+            this.labtme.Size = new System.Drawing.Size(136, 41);
+            this.labtme.TabIndex = 7;
+            this.labtme.Text = "label5";
+            // 
             // Start_Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1119, 667);
+            this.Controls.Add(this.labtme);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnChek);
             this.Controls.Add(this.tXBAnswer);
@@ -296,5 +316,7 @@
         private System.Windows.Forms.TextBox tXBAnswer;
         private System.Windows.Forms.Button btnChek;
         private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label labtme;
     }
 }

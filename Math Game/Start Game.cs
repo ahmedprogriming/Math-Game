@@ -17,7 +17,9 @@ namespace Math_Game
      public   char Option;
         decimal Rounds;
         float Resulte;
-        int RandomNumber;
+       
+
+        private Random random = new Random();
         enum enOptionTye { Plus=1,Mines=2,Multi=3,Divid=4};
         enum enQutionlevel { Eazy=1,Midum=2,Hurd=3};
 
@@ -134,22 +136,21 @@ namespace Math_Game
 
         private int CreatQuntions()
         {
-            Random random = new Random();
+           
 
             switch (sGame.eQutionlevel)
             {
                 case enQutionlevel.Eazy:
-                  RandomNumber=random.Next(1,10);
-                    break;
+                    return random.Next(1, 10);
                 case enQutionlevel.Midum:
-                    RandomNumber = random.Next(10, 50);
-                    break;
+                    return random.Next(10, 50);
                 case enQutionlevel.Hurd:
-                    RandomNumber = random.Next(50,100);
-                    break;
+                    return random.Next(50, 100);
+                default:
+                    return random.Next(1, 10);
             }
 
-            return RandomNumber;
+           
         }
 
         private void QuntionPerstion()
@@ -217,15 +218,18 @@ namespace Math_Game
                 MessageBox.Show("Game Over");
                 btnNext.Enabled = false;
                 btnChek.Enabled = false;
+                timer1.Enabled = false;
                 return;
             }
 
             sGame.RoundConter++;
             StartGame();
         }
-
+        int TimeLeft = 10;
         private void StartGame()
         {
+            TimeLeft = 10;
+            timer1.Start();
         
             labRound.Text=sGame.RoundConter.ToString()+"/"+ Rounds.ToString();
             QuntionPerstion();
@@ -239,6 +243,21 @@ namespace Math_Game
         private void btnNext_Click(object sender, EventArgs e)
         {
             NextRound();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            TimeLeft--;
+
+            labtme.Text = $"Time left:{TimeLeft}s";
+
+            if (TimeLeft== 0)
+            {
+                timer1.Stop();
+
+                MessageBox.Show("Time Up");
+                StartGame();
+            }
         }
     }
 }
